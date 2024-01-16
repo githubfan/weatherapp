@@ -1,9 +1,9 @@
  // Longitude and latitude parameters
-var latitude = 48.13743
-var longitude = 11.57549
+const latitude = 48.13743
+const longitude = 11.57549
 
 // API call with parameters
-var apiUrl = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&hourly=temperature_2m&forecast_days=1`;
+const apiUrl = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&hourly=temperature_2m&forecast_days=1`;
 
 // Fetch API
 fetch(apiUrl)
