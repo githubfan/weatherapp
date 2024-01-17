@@ -6,4 +6,5 @@ name = "javascript"
 [[transformers]]
 name = "prettier"
 
+[analyzers.meta]
 environment = ["nodejs]
