@@ -1,8 +1,8 @@
 const prompt = require("prompt-sync")();
 
 // Defining latitude and longitude variables
-let latitude;
-let longitude;
+let latitude = 0;
+let longitude = 0;
 
 // Check if latitude is between -90 and 90 and is a number, and if not, make the user enter a valid latitude
 while (true) {
