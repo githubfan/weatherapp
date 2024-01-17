@@ -3,12 +3,13 @@ const prompt = require("prompt-sync")();
 // Defining latitude and longitude variables
 let latitude = 0;
 let longitude = 0;
-const validity = true;
+let validity = true;
 // Check if latitude is between -90 and 90 and is a number, and if not, make the user enter a valid latitude
 while (validity == true) {
   latitude = parseFloat(prompt("Enter latitude: "));
 
   if (!isNaN(latitude) && latitude >= -90 && latitude <= 90) {
+    validity = false;
     break;
   } else {
     console.log(
@@ -16,12 +17,13 @@ while (validity == true) {
     );
   }
 }
-
+validity = true;
 // Check if longitude is between -180 and 180 and is a number, and if not, tell the user to enter a valid longitude
 while (validity == true) {
   longitude = parseFloat(prompt("Enter longitude: "));
 
   if (!isNaN(longitude) && longitude >= -180 && longitude <= 180) {
+    validity = false;
     break;
   } else {
     console.log(
