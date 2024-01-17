@@ -5,3 +5,6 @@ name = "javascript"
 
 [[transformers]]
 name = "prettier"
+
+[[environment]]
+name = "nodejs"
