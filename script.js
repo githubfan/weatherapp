@@ -76,7 +76,7 @@ fetch(geocodingApi)
         };
         // Matches weather code to description
         weatherDesc =
-          weatherDescriptions[weatherCode] || "Unknown weather code";
+          weatherDescriptions[weatherCode] ?? "Unknown weather code";
 
         // Print Weather Description
         console.log(`Current Weather: ${weatherDesc}`);
