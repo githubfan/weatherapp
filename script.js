@@ -39,75 +39,49 @@ fetch(geocodingApi)
         return response.json();
       })
       .then((weatherData) => {
-        // Extracting Weather Codes
+        // Extracting Weather Code
         const weatherCode = weatherData.daily.weather_code[0];
         let weatherDesc = "";
 
         // Determining different weather code descriptions
-
-          if (weatherCode === 0) {
-            weatherDesc = "Clear sky";
-          } else if (weatherCode === 1) {
-            weatherDesc = "Mainly clear";
-          } else if (weatherCode === 2) {
-            weatherDesc = "Partly cloudy";
-          } else if (weatherCode === 3) {
-            weatherDesc = "Overcast";
-          } else if (weatherCode === 45) {
-            weatherDesc = "Fog";
-          } else if (weatherCode === 48) {
-            weatherDesc = "Depositing Rime Fog";
-          } else if (weatherCode === 51) {
-            weatherDesc = "Drizzle: Light intensity";
-          } else if (weatherCode === 53) {
-            weatherDesc = "Drizzle: Moderate intensity";
-          } else if (weatherCode === 55) {
-            weatherDesc = "Drizzle: Dense intensity";
-          } else if (weatherCode === 56) {
-            weatherDesc = "Freezing Drizzle: Light intensity";
-          } else if (weatherCode === 57) {
-            weatherDesc = "Freezing Drizzle: Dense intensity";
-          } else if (weatherCode === 61) {
-            weatherDesc = "Rain: Slight intensity";
-          } else if (weatherCode === 63) {
-            weatherDesc = "Rain: Moderate intensity";
-          } else if (weatherCode === 65) {
-            weatherDesc = "Rain: Heavy intensity";
-          } else if (weatherCode === 66) {
-            weatherDesc = "Freezing Rain: Light intensity";
-          } else if (weatherCode === 67) {
-            weatherDesc = "Freezing Rain: Heavy intensity";
-          } else if (weatherCode === 71) {
-            weatherDesc = "Snowfall: Slight intensity";
-          } else if (weatherCode === 73) {
-            weatherDesc = "Snowfall: Moderate intensity";
-          } else if (weatherCode === 75) {
-            weatherDesc = "Snowfall: Heavy intensity";
-          } else if (weatherCode === 77) {
-            weatherDesc = "Snow grains";
-          } else if (weatherCode === 80) {
-            weatherDesc = "Rain Showers: Slight intensity";
-          } else if (weatherCode === 81) {
-            weatherDesc = "Rain Showers: Moderate intensity";
-          } else if (weatherCode === 82) {
-            weatherDesc = "Rain Showers: Violent intensity";
-          } else if (weatherCode === 85) {
-            weatherDesc = "Snow Showers: Slight intensity";
-          } else if (weatherCode === 86) {
-            weatherDesc = "Snow Showers: Heavy intensity";
-          } else if (weatherCode === 95) {
-            weatherDesc = "Thunderstorm: Slight intensity";
-          } else if (weatherCode === 96) {
-            weatherDesc = "Thunderstorm: Moderate intensity";
-          } else if (weatherCode === 99) {
-            weatherDesc = "Thunderstorm with heavy hail";
-          }
-
+        const weatherDescriptions = {
+          0: "Clear sky",
+          1: "Mainly clear",
+          2: "Partly cloudy",
+          3: "Overcast",
+          45: "Fog",
+          48: "Depositing Rime Fog",
+          51: "Drizzle: Light intensity",
+          53: "Drizzle: Moderate intensity",
+          55: "Drizzle: Dense intensity",
+          56: "Freezing Drizzle: Light intensity",
+          57: "Freezing Drizzle: Dense intensity",
+          61: "Rain: Slight intensity",
+          63: "Rain: Moderate intensity",
+          65: "Rain: Heavy intensity",
+          66: "Freezing Rain: Light intensity",
+          67: "Freezing Rain: Heavy intensity",
+          71: "Snowfall: Slight intensity",
+          73: "Snowfall: Moderate intensity",
+          75: "Snowfall: Heavy intensity",
+          77: "Snow grains",
+          80: "Rain Showers: Slight intensity",
+          81: "Rain Showers: Moderate intensity",
+          82: "Rain Showers: Violent intensity",
+          85: "Snow Showers: Slight intensity",
+          86: "Snow Showers: Heavy intensity",
+          95: "Thunderstorm: Slight intensity",
+          96: "Thunderstorm: Moderate intensity",
+          99: "Thunderstorm with heavy hail",
+        };
+        // Matches weather code to description
+        weatherDesc = weatherDescriptions[weatherCode] || "Unknown weather code";
+        
         // Print Weather Description
         console.log(`Current Weather: ${weatherDesc}`);
 
-        // Function to format a date in the desired form
-        function formatWeatherDate(dateString) {
+        // Function to format a date in the desired format
+        const formatWeatherDate = (dateString) => {
           return new Date(dateString).toLocaleString("en-US", {
             day: "numeric",
             month: "long",
@@ -115,12 +89,12 @@ fetch(geocodingApi)
             hour: "2-digit",
             minute: "2-digit",
           });
-        }
+        };
 
         // Only showing weather from the current hour.
         const currentHour = new Date().getHours();
         const startIndex = weatherData.hourly.time.findIndex(
-          (time) => new Date(time).getHours() >= currentHour,
+          (time) => new Date(time).getHours() >= currentHour
         );
 
         // Formatting each weather line
@@ -134,7 +108,7 @@ fetch(geocodingApi)
 
           // Print Weather
           console.log(
-            `${highlight}${formattedDate}: ${temperature}°C${highlight}`,
+            `${highlight}${formattedDate}: ${temperature}°C${highlight}`
           );
         });
       })
