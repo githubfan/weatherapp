@@ -102,11 +102,7 @@ fetch(geocodingApi)
           weatherDesc = "Thunderstorm with heavy hail";
         }
 
-<<<<<<< HEAD
         console.log("Current Weather: " + weatherDesc)
-=======
-        console.log("Current Weather: " + `${weatherDesc}`);
->>>>>>> ee5f4e2f6a4a64f807624e9a55194df13baf358e
 
         // Function to format a date in the desired form
         function formatWeatherDate(dateString) {
