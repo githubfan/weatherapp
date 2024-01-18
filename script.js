@@ -5,10 +5,6 @@ const prompt = require("prompt-sync")();
 const config = require("./config");
 const apiKey = config.apiKey;
 
-// Create a weather code function
-function weatherCode(weatherCode) {
-
-}
 // Defining latitude and longitude variables
 let latitude = 0;
 let longitude = 0;
@@ -48,7 +44,7 @@ fetch(geocodingApi)
         let weatherDesc = "";
 
         // Determining different weather code descriptions
-        function weatherDecode (code) {
+        function weatherDecode (weatherCode) {
           if (weatherCode === 0) {
             weatherDesc = "Clear sky";
           } else if (weatherCode === 1) {
