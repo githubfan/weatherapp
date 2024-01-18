@@ -75,8 +75,9 @@ fetch(geocodingApi)
           99: "Thunderstorm with heavy hail",
         };
         // Matches weather code to description
-        weatherDesc = weatherDescriptions[weatherCode] || "Unknown weather code";
-        
+        weatherDesc =
+          weatherDescriptions[weatherCode] || "Unknown weather code";
+
         // Print Weather Description
         console.log(`Current Weather: ${weatherDesc}`);
 
@@ -94,7 +95,7 @@ fetch(geocodingApi)
         // Only showing weather from the current hour.
         const currentHour = new Date().getHours();
         const startIndex = weatherData.hourly.time.findIndex(
-          (time) => new Date(time).getHours() >= currentHour
+          (time) => new Date(time).getHours() >= currentHour,
         );
 
         // Formatting each weather line
@@ -108,7 +109,7 @@ fetch(geocodingApi)
 
           // Print Weather
           console.log(
-            `${highlight}${formattedDate}: ${temperature}°C${highlight}`
+            `${highlight}${formattedDate}: ${temperature}°C${highlight}`,
           );
         });
       })
