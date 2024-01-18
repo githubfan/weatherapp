@@ -39,7 +39,6 @@ fetch(geocodingApi)
         return response.json();
       })
       .then((weatherData) => {
-
         // Extracting Weather Codes
         const weatherCode = weatherData.daily.weather_code[0];
         let weatherDesc = "";
@@ -103,27 +102,42 @@ fetch(geocodingApi)
           weatherDesc = "Thunderstorm with heavy hail";
         }
 
+<<<<<<< HEAD
         console.log("Current Weather: " + weatherDesc)
+=======
+        console.log("Current Weather: " + `${weatherDesc}`);
+>>>>>>> ee5f4e2f6a4a64f807624e9a55194df13baf358e
 
         // Function to format a date in the desired form
         function formatWeatherDate(dateString) {
-          return new Date(dateString).toLocaleString('en-US', { day: 'numeric', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit' });
+          return new Date(dateString).toLocaleString("en-US", {
+            day: "numeric",
+            month: "long",
+            year: "numeric",
+            hour: "2-digit",
+            minute: "2-digit",
+          });
         }
 
-        // Only showing weather from the current hour. 
+        // Only showing weather from the current hour.
         const currentHour = new Date().getHours();
-        const startIndex = weatherData.hourly.time.findIndex(time => new Date(time).getHours() >= currentHour);
+        const startIndex = weatherData.hourly.time.findIndex(
+          (time) => new Date(time).getHours() >= currentHour,
+        );
 
         // Formatting each weather line
         weatherData.hourly.time.slice(startIndex).forEach((time, index) => {
           const formattedDate = formatWeatherDate(time);
-          const temperature = weatherData.hourly.temperature_2m[startIndex + index];
+          const temperature =
+            weatherData.hourly.temperature_2m[startIndex + index];
 
           // Highlight the first value in blue
-          const highlight = index === 0 ? '\x1b[34m' : '\x1b[0m'; // ANSI escape codes for blue color and reset
+          const highlight = index === 0 ? "\x1b[34m" : "\x1b[0m"; // ANSI escape codes for blue color and reset
 
           // Print Weather
-          console.log(`${highlight}${formattedDate}: ${temperature}°C${highlight}`);
+          console.log(
+            `${highlight}${formattedDate}: ${temperature}°C${highlight}`,
+          );
         });
       })
       .catch((error) => {
