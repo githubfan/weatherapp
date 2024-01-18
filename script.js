@@ -7,7 +7,7 @@ let latitude = 0;
 let longitude = 0;
 
 // prompt user to enter place name 
-let place = prompt("Place Name: ");
+const place = prompt("Place Name: ");
 
 // Geocoding API
 const geocodingApi = `https://geocode.maps.co/search?q=${place}&api_key=${apiKey}`
@@ -20,7 +20,7 @@ fetch(geocodingApi)
   })
   .then((data) => {
     // Getting the First geocoding response 
-    let firstValue = data[0];
+    const firstValue = data[0];
     // Extracting latitude and longitude
     latitude = Number(firstValue.lat)
     longitude = Number(firstValue.lon)
