@@ -44,7 +44,7 @@ fetch(geocodingApi)
         let weatherDesc = "";
 
         // Determining different weather code descriptions
-        function weatherDecode(weatherCode) {
+
           if (weatherCode === 0) {
             weatherDesc = "Clear sky";
           } else if (weatherCode === 1) {
@@ -102,8 +102,7 @@ fetch(geocodingApi)
           } else if (weatherCode === 99) {
             weatherDesc = "Thunderstorm with heavy hail";
           }
-        }
-        weatherDecode(weatherCode);
+
         // Print Weather Description
         console.log(`Current Weather: ${weatherDesc}`);
 
