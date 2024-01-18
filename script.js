@@ -18,9 +18,9 @@ fetch(geocodingApi)
     }
     return response.json();
   })
-  .then((data) => {
+  .then((geocodeData) => {
     // Getting the First geocoding response
-    const firstValue = data[0];
+    const firstValue = geocodeData[0];
     // Extracting latitude and longitude
     latitude = Number(firstValue.lat);
     longitude = Number(firstValue.lon);
@@ -35,8 +35,8 @@ fetch(geocodingApi)
         }
         return response.json();
       })
-      .then((data) => {
-        console.log(data);
+      .then((weatherData) => {
+        console.log(weatherData);
       })
       .catch((error) => {
         console.error(
