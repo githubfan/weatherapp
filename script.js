@@ -1,16 +1,16 @@
 const prompt = require("prompt-sync")();
 // Import Geocoding APi Key
-const config = require('./config');
+const config = require("./config");
 const apiKey = config.apiKey;
 // Defining latitude and longitude variables
 let latitude = 0;
 let longitude = 0;
 
-// prompt user to enter place name 
-const place = prompt("Place Name: ");
+// prompt user to enter place name
+let place = prompt("Place Name: ");
 
 // Geocoding API
-const geocodingApi = `https://geocode.maps.co/search?q=${place}&api_key=${apiKey}`
+const geocodingApi = `https://geocode.maps.co/search?q=${place}&api_key=${apiKey}`;
 fetch(geocodingApi)
   .then((response) => {
     if (!response.ok) {
@@ -19,11 +19,11 @@ fetch(geocodingApi)
     return response.json();
   })
   .then((data) => {
-    // Getting the First geocoding response 
-    const firstValue = data[0];
+    // Getting the First geocoding response
+    let firstValue = data[0];
     // Extracting latitude and longitude
-    latitude = Number(firstValue.lat)
-    longitude = Number(firstValue.lon)
+    latitude = Number(firstValue.lat);
+    longitude = Number(firstValue.lon);
 
     // Weather API
     const weatherApi = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&hourly=temperature_2m&forecast_days=1`;
@@ -39,10 +39,12 @@ fetch(geocodingApi)
         console.log(data);
       })
       .catch((error) => {
-        console.error("There has been a problem with your fetch operation:", error);
+        console.error(
+          "There has been a problem with your fetch operation:",
+          error,
+        );
       });
   })
   .catch((error) => {
     console.error("There has been a problem with your fetch operation:", error);
   });
-
