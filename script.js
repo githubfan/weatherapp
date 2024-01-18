@@ -44,7 +44,7 @@ fetch(geocodingApi)
         let weatherDesc = "";
 
         // Determining different weather code descriptions
-        function weatherDecode (weatherCode) {
+        function weatherDecode(weatherCode) {
           if (weatherCode === 0) {
             weatherDesc = "Clear sky";
           } else if (weatherCode === 1) {
